@@ -1,0 +1,741 @@
+<style>
+    h3, h4, strong{
+        font-family: 'Open Sans Condensed', sans-serif;
+    }
+    .line{
+        display: block;
+        margin: 20px auto;
+        background-color: rgba(204, 204, 204, 0.5);
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        width: 100%;
+        height: 3px;
+    }
+    .default{
+        background: none;
+        border: none;
+        font-size: 1.5em;
+        font-family: 'Open Sans Condensed', sans-serif;
+        transition: text-shadow ease-in-out .3s;
+        outline: none;
+        border-bottom: 5px solid #dcd8da;
+        padding-bottom: 10px;
+    }
+    .default:hover{
+        text-shadow: 1px 1px 5px #444;;
+    }
+    .active-btn{
+        border-bottom: 5px solid #ffdd22;
+        padding-bottom: 10px;
+        font-weight: 700;
+    }
+    .active-btn:hover{
+        text-shadow: none;
+    }
+</style>
+<div ng-show="userLoginIn">
+    <h3 style="text-align: end; margin-bottom: 10px;">Добро пожаловать, <span style="color: tomato;">{{user.displayName}}</span>.</h3>
+
+    <!--<pre>-->
+        <!--"displayName": {{user.displayName}}-->
+        <!--"email": {{user.email}}-->
+        <!--"photoURL": {{user.photoURL || 'no photo'}}-->
+        <!--"uid": {{user.uid }}-->
+    <!--</pre>-->
+
+    <header style="width: 1115px; box-sizing: border-box; margin-bottom: 20px">
+        <button style="width: 49.5%; box-sizing: border-box" class="default active-btn">Просмотреть мои объявления</button>
+        <button style="width: 49.5%; box-sizing: border-box" class="default ">Разместить новое объявление</button>
+    </header>
+    <!--разместить новое объвление-->
+    <form onsubmit=" return false;" >
+        <section ng-show="userNewAdd">
+            <section>
+                 <aside class="auto-catalog" style="float: left; width: 230px; margin-right: 30px;">
+                    <h4 style="text-align: center; margin-top: 0;">Укажите характеристики автомобиля</h4>
+                     <div class="line" style="width: 80%; margin: 0 auto 10px auto;"></div>
+                    <form action="" class="auto-filters" style="background: none;">
+
+                        <fieldset class="auto-filters">
+                            <h2 style="margin-top: 0">
+                                <strong>Цена</strong>
+                            </h2>
+                            <div class="price-select">
+                                <div class="price-group group">
+                                    <select name="price"
+                                            ng-model="m_price"
+                                            required>
+                                        <option value="">Не выбрано</option>
+                                        <option value="1000">1000 $</option>
+                                        <option value="2000">2000 $</option>
+                                        <option value="3000">3000 $</option>
+                                        <option value="4000">4000 $</option>
+                                        <option value="5000">5000 $</option>
+                                        <option value="6000">6000 $</option>
+                                        <option value="7000">7000 $</option>
+                                        <option value="8000">8000 $</option>
+                                        <option value="9000">9000 $</option>
+                                        <option value="10000">10 000 $</option>
+                                        <option value="12000">12 000 $</option>
+                                        <option value="14000">14 000 $</option>
+                                        <option value="16000">16 000 $</option>
+                                        <option value="18000">18 000 $</option>
+                                        <option value="20000">20 000 $</option>
+                                        <option value="22000">22 000 $</option>
+                                        <option value="24000">24 000 $</option>
+                                        <option value="26000">26 000 $</option>
+                                        <option value="28000">28 000 $</option>
+                                        <option value="30000">30 000 $</option>
+                                        <option value="35000">35 000 $</option>
+                                        <option value="40000">40 000 $</option>
+                                        <option value="45000">45 000 $</option>
+                                        <option value="50000">50 000 $</option>
+                                        <option value="75000">75 000 $</option>
+                                        <option value="100000">100 000 $</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="auto-filters">
+                            <h2><strong>Местонахождение</strong></h2>
+                            <div class="auto-place">
+                                <div class="group">
+                                    <select name="country"
+                                            ng-model="m_country"
+                                            class="country"
+                                            required>
+                                        <option value="">Не выбрано</option>
+                                        <option value="1">Все страны</option>
+                                        <option value="2">Беларусь</option>
+                                        <option value="3">Не в Беларуси</option>
+                                    </select>
+                                </div>
+                                <div class="group">
+                                    <select name="region"
+                                            ng-model="m_region"
+                                            class="region" disabled="disabled"
+                                            required>
+                                        <option value="">Все области</option>
+                                        <option value="1">Брестская</option>
+                                        <option value="2">Витебская</option>
+                                        <option value="3">Гомельская</option>
+                                        <option value="4">Гродненская</option>
+                                        <option value="5">Минская</option>
+                                        <option value="6">Могилевская</option>
+                                        <option value="7">Минск</option>
+                                    </select>
+                                </div>
+                                <!--<div class="group">-->
+                                    <!--<select name="city" class="city" disabled="disabled">-->
+                                        <!--<option value="">Все города</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="auto-filters car-brands">
+                            <h2><strong>Марка</strong></h2>
+                            <div class="manufactures">
+                                <div class="group">
+                                    <select class="manufacture"
+                                            ng-model="make"
+                                            name="make"
+                                            required>
+                                        <option value="">Все марки</option>
+                                        <option ng-repeat="carMake in carMakes" value="{{ $index }}">{{ carMake }}</option>
+                                    </select>
+                                </div>
+                                <div class="group">
+                                    <select class="model"
+                                            ng-model="models"
+                                            name="models"
+                                            disabled="disabled"
+                                            required>
+                                        <option value="">Все модели</option>
+                                        <option ng-repeat="carModel in carsModels" value="{{ carModel.title }}">{{carModel.title}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="auto-filters">
+                            <h2><strong>Тип кузова</strong></h2>
+                            <ul class="body-types">
+                                <li class="body_type-1">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_bodyType"
+                                               name="bodyType"
+                                               value="1"
+                                               required>
+                                        Седан
+                                    </label>
+                                </li>
+                                <li class="body_type-2">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_bodyType"
+                                               name="bodyType"
+                                               value="2">
+                                        Универсал
+                                    </label>
+                                </li>
+                                <li class="body_type-3">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_bodyType"
+                                               name="bodyType"
+                                               value="3">
+                                        Хетчбэк
+                                    </label>
+                                </li>
+                                <li class="body_type-4">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_bodyType"
+                                               name="bodyType"
+                                               value="4">
+                                        Минивэн
+                                    </label>
+                                </li>
+                                <li class="body_type-5">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_bodyType"
+                                               name="bodyType"
+                                               value="5">
+                                        Внедорожник
+                                    </label>
+                                </li>
+                                <li class="body_type-6">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_bodyType"
+                                               name="bodyType"
+                                               value="6">
+                                        Купе
+                                    </label>
+                                </li>
+                                <li class="body_type-7">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_bodyType"
+                                               name="bodyType"
+                                               value="7">
+                                        Кабриолет
+                                    </label>
+                                </li>
+                                <li class="body_type-8">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_bodyType"
+                                               name="bodyType"
+                                               value="8">
+                                        Микроавтобус
+                                    </label>
+                                </li>
+                                <li class="body_type-9">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_bodyType"
+                                               name="bodyType"
+                                               value="9">
+                                        Фургон
+                                    </label>
+                                </li>
+                                <li class="body_type-10">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_bodyType"
+                                               name="bodyType"
+                                               value="10">
+                                        Пикап
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <fieldset class="auto-filters">
+                            <h2><strong>Год выпуска</strong></h2>
+                            <div class="dblselect">
+                                <div class="group">
+                                    <select
+                                            ng-model="m_year"
+                                            name="year"
+                                            required>
+                                        <option value="">Не выбрано</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2014">2014</option>
+                                        <option value="2013">2013</option>
+                                        <option value="2012">2012</option>
+                                        <option value="2011">2011</option>
+                                        <option value="2010">2010</option>
+                                        <option value="2009">2009</option>
+                                        <option value="2008">2008</option>
+                                        <option value="2007">2007</option>
+                                        <option value="2006">2006</option>
+                                        <option value="2005">2005</option>
+                                        <option value="2004">2004</option>
+                                        <option value="2003">2003</option>
+                                        <option value="2002">2002</option>
+                                        <option value="2001">2001</option>
+                                        <option value="2000">2000</option>
+                                        <option value="1999">1999</option>
+                                        <option value="1998">1998</option>
+                                        <option value="1997">1997</option>
+                                        <option value="1996">1996</option>
+                                        <option value="1995">1995</option>
+                                        <option value="1994">1994</option>
+                                        <option value="1993">1993</option>
+                                        <option value="1992">1992</option>
+                                        <option value="1991">1991</option>
+                                        <option value="1990">1990</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="auto-filters">
+                            <h2><strong>Тип двигателя</strong></h2>
+                            <ul class="fuels">
+                                <li class="fuel-1">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_fuel"
+                                               name="fuel"
+                                               value="1"
+                                               required> Бензин
+                                    </label>
+                                </li>
+                                <li class="fuel-2">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_fuel"
+                                               name="fuel"
+                                               value="2"> Дизель
+                                    </label>
+                                </li>
+                                <li class="fuel-3">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_fuel"
+                                               name="fuel"
+                                               value="3"> Газ (бензин)
+                                    </label>
+                                </li>
+                                <li class="fuel-4">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_fuel"
+                                               name="fuel"
+                                               value="4"> Гибрид (бензин)
+                                    </label>
+                                </li>
+                                <li class="fuel-5">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_fuel"
+                                               name="fuel"
+                                               value="5"> Гибрид (дизель)
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <fieldset class="auto-filters">
+                            <h2><strong>Объём двигателя</strong></h2>
+                            <div class="dblselect">
+                                <div class="group">
+                                    <select
+                                            ng-model="m_volume"
+                                            name="volume"
+                                            required>
+                                        <option value="">Не выбрано</option>
+                                        <option value="1">1 л</option>
+                                        <option value="1.2">1.2 л</option>
+                                        <option value="1.4">1.4 л</option>
+                                        <option value="1.5">1.5 л</option>
+                                        <option value="1.6">1.6 л</option>
+                                        <option value="1.8">1.8 л</option>
+                                        <option value="1.9">1.9 л</option>
+                                        <option value="2">2 л</option>
+                                        <option value="2.2">2.2 л</option>
+                                        <option value="2.3">2.3 л</option>
+                                        <option value="2.4">2.4 л</option>
+                                        <option value="2.5">2.5 л</option>
+                                        <option value="2.8">2.8 л</option>
+                                        <option value="3">3 л</option>
+                                        <option value="3.2">3.2 л</option>
+                                        <option value="3.5">3.5 л</option>
+                                        <option value="4">4 л</option>
+                                        <option value="4.5">4.5 л</option>
+                                        <option value="5">5 л</option>
+                                        <option value="6">6 л</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="auto-filters">
+                            <h2><strong>Коробка передач</strong></h2>
+                            <ul class="transmissions">
+                                <li class="transmission-1">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_transmition"
+                                               name="transmission"
+                                               value="1"
+                                               required>
+                                        Автоматическая
+                                    </label>
+                                </li>
+                                <li class="transmission-2">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_transmition"
+                                               name="transmission"
+                                               value="2">
+                                        Механическая
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <fieldset class="auto-filters">
+                            <h2><strong>Привод</strong></h2>
+                            <ul class="drivetrains">
+                                <li class="drivetrain-1">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_drivetrain"
+                                               name="drivetrain"
+                                               value="1"
+                                               required> Передний
+                                    </label>
+                                </li>
+                                <li class="drivetrain-2">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_drivetrain"
+                                               name="drivetrain"
+                                               value="2"> Задний
+                                    </label>
+                                </li>
+                                <li class="drivetrain-3">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_drivetrain"
+                                               name="drivetrain"
+                                               value="3"> Полный
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <fieldset class="auto-filters">
+                            <h2><strong>Состояние</strong></h2>
+                            <ul class="states">
+                                <li class="state-2">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_condition"
+                                               name="state"
+                                               value="1"
+                                               required>
+                                        С пробегом
+                                    </label>
+                                </li>
+                                <li class="state-1">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_condition"
+                                               name="state"
+                                               value="2">
+                                        Новый
+                                    </label>
+                                </li>
+                                <li class="state-3">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_condition"
+                                               name="state"
+                                               value="3">
+                                        С повреждениями
+                                    </label>
+                                </li>
+                            </ul>
+                            <h2><strong>Пробег</strong></h2>
+                            <div class="group">
+                                <select name="mileage"
+                                        ng-model="m_mileage"
+                                        class="mileage"
+                                        required>
+                                    <option value="">Не выбрано</option>
+                                    <option value="5000">До 5000 км</option>
+                                    <option value="10000">До 10 000 км</option>
+                                    <option value="15000">До 15 000 км</option>
+                                    <option value="20000">До 20 000 км</option>
+                                    <option value="30000">До 30 000 км</option>
+                                    <option value="40000">До 40 000 км</option>
+                                    <option value="50000">До 50 000 км</option>
+                                    <option value="75000">До 75 000 км</option>
+                                    <option value="100000">До 100 000 км</option>
+                                    <option value="150000">До 150 000 км</option>
+                                    <option value="200000">До 200 000 км</option>
+                                    <option value="250000">До 250 000 км</option>
+                                    <option value="300000">Свыше 300 000 км</option>
+                                </select>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="auto-filters">
+                            <h2><strong>Продавец</strong></h2>
+                            <ul class="seller_type">
+                                <li class="seller_type-1">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_seller"
+                                               name="sellerType"
+                                               value="1"
+                                               required>
+                                        Частное лицо
+                                    </label>
+                                </li>
+                                <li class="seller_type-2">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_seller"
+                                               name="sellerType"
+                                               value="2">
+                                        Автохаус
+                                    </label>
+                                </li>
+                                <li class="seller_type-3">
+                                    <label class="">
+                                        <input type="radio"
+                                               ng-model="m_seller"
+                                               name="sellerType"
+                                               value="3">
+                                        Официальный дилер
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+                    </form>
+                </aside>
+                 <main style="float: right; width: 855px; overflow-x: hidden;">
+                    <section>
+                        <h4 style="margin-top: 0; text-align: center;">Выберите и загрузите фото</h4>
+                        <style>
+                            #drop-zone{
+                                background-color: #f7f7f7;
+                                border: 20px dashed #e9e9e9;
+                                border-radius: 5px;
+                                width: 500px;
+                                height: 400px;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                margin: 0 auto;
+                                box-sizing: border-box;
+                                font-family: 'Comfortaa', sans-serif;
+                            }
+                            #drop-zone>i{
+                                margin-bottom: 20px;
+                            }
+                            #drop-zone>p{
+                                font-size: 1.4em;
+                            }
+                            #drop-zone.is-dragover{
+                                background: #ddd;
+                            }
+                            label{
+                                transition: text-shadow ease-in-out .3s;
+                            }
+                            label:hover{
+                                text-shadow: 1px 1px 5px #444;
+                            }
+                        </style>
+                        <div id="drop-zone">
+                            <i class="icon-camera" style="font-size: 10em;"></i>
+                            <p>Можно загрузить еще: </p>
+                            <p>{{8 - uploadImagesQuantity}} изображений</p>
+                        </div>
+                        <!---->
+                         <h4 style="margin-top: 20px; text-align: center;">Или загрузите с помощью диалогового окна</h4>
+                        <div id="images" style="display: flex; margin: 15px 0 0 0;flex-direction: row; justify-content: flex-start;align-items: baseline;">
+                            <img src="" id="img-1" alt="">
+                        </div>
+                        <input type="file" id="file-upload" multiple style=" display:none;" >
+                        <label for="file-upload" style="display: flex;
+                                                justify-content: center;
+                                                margin: 0 auto 15px auto;">
+                            <svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+                                <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path>
+                            </svg>
+                            <span>Выбрать изображение…</span>
+                        </label>
+                        <!---->
+                        <div class="line" style="margin: 0 auto 10px auto; width: 85%;"></div>
+                    </section>
+                    <section>
+                        <h4 style="text-align: center; margin-top: 30px;">Выберите дополнительные опции в автомобиле</h4>
+                        <div class="auto-options" style="display: flex; justify-content: space-around; padding: 15px 0;">
+                            <style>
+                                li{
+                                    list-style-type: none;
+                                }
+                                input[type='checkbox']{
+                                    margin-top: -2px;
+                                }
+                            </style>
+                            <ul>
+                               <li ng-repeat="(spec,enabled) in specs" ng-show="$index<5">
+                                   <label>
+                                       <input type="checkbox" ng-model="specs[spec]">
+                                       {{ spec }}
+                                   </label>
+                               </li>
+                            </ul>
+                            <ul>
+                                <li ng-repeat="(spec,enabled) in specs" ng-show="$index>=5">
+                                    <label>
+                                        <input type="checkbox" ng-model="specs[spec]">
+                                        {{ spec }}
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="line" style="margin: 0 auto 10px auto; width: 85%;"></div>
+                    </section>
+                    <section>
+                        <h4 style="text-align: center; margin-top: 30px;">Добавьте описание автомобиля</h4>
+                        <textarea name="description" ng-model="m_description" placeholder="Опишите свой автомобиль, чем он хорош и возможно какие есть проблемы..." id="" maxlength="1500" style="min-width: 770px;max-width: 770px;display: block;margin: 30px auto;min-height: 300px;max-height: 300px;" required></textarea>
+                        <div class="line" style="margin: 0 auto 10px auto; width: 85%;"></div>
+                    </section>
+                    <section>
+                        <h4 style="text-align: center; margin: 30px 0;">Укажите свой номер телефона</h4>
+                        <input id="phone" name="phone" type="text" placeholder="+(375) 29 123-45-67" style="display: block; margin: 0 auto 20px auto;" required>
+                        <h4 style="text-align: center; margin: 30px 0;">Если все правильно, можно загрузить объявление: <button type="submit" id="sendAdd" class="btn btn-default" style="margin-left: 10px;">Загрузить объявление</button></h4>
+                    </section>
+                 </main>
+            </section>
+        </section>
+    </form>
+    <section ng-hide="userNewAdd" style="min-height: 900px;">
+        <div class="auto-add" style="width:1115px; float: none">
+            <table class="auto-table" cellspacing="0" style="width:1115px;">
+                <thead>
+                <tr class="auto-sorters-tr">
+                    <th colspan="2">
+                        <ul class="auto-sorters">
+                            <li class="auto-sorters-new">
+                                <a href=""
+                                   ng-model="sorters_new"
+                                   data="last_time_up">Актуальные</a>
+                            </li>
+                            <li class="auto-sorters-last">
+                                <a href=""
+                                   ng-model="sorters_last"
+                                   data="creation_date">Последние добавленные</a>
+                            </li>
+                            <li class="flr auto-sorters-dist">
+                                <a href=""
+                                   ng-model="sorters_dist"
+                                   data="odometer">Пробег</a>
+                            </li>
+                            <li class="flr auto-sorters-year">
+                                <a href=""
+                                   ng-model="sorters_year"
+                                   data="year" class="">Год</a>
+                            </li>
+                        </ul>
+                    </th>
+                    <th>
+                        <ul class="auto-sorters">
+                            <li class="auto-sorters-price">
+                                <a href="" data="price">Цена</a>
+                            </li>
+                        </ul>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr id="car_1" class="carRow" ng-repeat=" ad in userAds">
+                        <th colspan="2" class="cost-left">
+                            <h2>
+                            <span>
+                                <a ui-sref="auto/detail({id: ad._id.$oid })">
+                                    <strong>{{ad.makeName}}: {{ad.model}}</strong>
+                                </a>
+                            </span>
+                            </h2>
+                            <span class="auto-table-small-cols">
+                                <span class="dist">
+                                    <strong>{{ad.mileage || '—'}}</strong> км
+                                </span>
+                            </span>
+                            <span class="auto-table-small-cols">
+                                <span class="year">{{ad.year}}</span>
+                            </span>
+                            <ul class="auto-table-thumbs">
+                                <li>
+                                    <a ui-sref="auto/detail({id: ad._id.$oid })">
+                                        <img width="80" height="80" ng-src="{{ad.photos[0]}}">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a ui-sref="auto/detail({id: ad._id.$oid })">
+                                        <img width="80" height="80" ng-src="{{ad.photos[1]}}">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a ui-sref="auto/detail({id: ad._id.$oid })">
+                                        <img width="80" height="80" ng-src="{{ad.photos[2]}}">
+                                    </a>
+                                </li>
+                            </ul>
+                            <!--<p>{{ ad.specs | ifTrue }}</p>-->
+                            <p style="display: inline-block;"> {{ad.specs | ifTrue }} </p>
+                            <ul class="auto-table-tlbar">
+                                <li class="photos">
+                                    <a ui-sref="auto/detail({id: ad._id.$oid })"><i class="icon-camera"></i>
+                                        <span class="photo-count">{{ad.photos.length}}</span>
+                                    </a>
+                                </li>
+                                <li class="upper">
+                                    <!--Создано {{new Date(Date.parse(ad.time)).toDateString()}}-->
+                                    Создано: {{ ad.time | date:'d MMM, y hh:mm' }}
+                                </li>
+
+                            </ul>
+                        </th>
+                        <th class="cost-right">
+                            <div class="cost-i">
+                                <p class="big">
+                                    <a ui-sref="auto/detail({id: ad._id.$oid })">
+                                        <span class="price-primary">{{ad.price}} $</span>
+                                    </a>
+                                </p>
+                                <p class="small">
+                                    {{ad.price * 1.9}} BYN
+                                    <br> {{ad.price * 0.85}} €
+                                    <br>
+                                </p>
+                            </div>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+<div class="line" style="margin: 0 auto 10px auto; clear: both"></div>
+<div ng-hide="userLoginIn" >
+    you are not login in please login in
+</div>
+

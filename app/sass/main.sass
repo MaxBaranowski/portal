@@ -1,0 +1,902 @@
+@import vars
+
+html
+    width: 100%
+    height: 100%
+    margin: 0 auto
+body
+    padding: 0
+    width: 1115px
+    margin: 0 auto
+    //background-color: #F5F9FF
+//navigation styles starts
+.header
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+    align-items: center
+    max-width: 1115px
+    min-width: 1100px
+    margin: 0 auto
+    h2
+        margin: 0
+        width: 190px
+        font-family: 'Open Sans Condensed', sans-serif
+        text-align: center
+//navigation bar
+.navigation
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    font-size: 1em
+    color: black
+    //border-bottom: 1px solid #f1f1f1
+    padding: 0
+    max-width: 1115px
+    min-width: 1100px
+    margin: 0 auto
+    .nav-links
+        width: 665px
+        display: flex
+        flex-direction: row
+        justify-content: space-around
+        align-items: center
+        a
+            text-decoration: none
+            color: black
+            text-transform: uppercase
+            font-family: 'Open Sans Condensed', sans-serif
+            font-size: 1.4em
+            font-weight: bold
+    .auth-bar
+        .user-bar
+            width: 226px
+            margin-right: 20px
+            .auth-login
+                min-width: 92px
+                padding-right: 15px
+                padding-left: 15px
+                font-family: 'Open Sans',Arial,Helvetica,Verdana,sans-serif
+                line-height: 1.214
+                cursor: pointer
+                -o-transition: color .1s linear
+                transition: color .1s linear
+                -webkit-user-select: none
+                -moz-user-select: none
+                -ms-user-select: none
+                user-select: none
+                color: #cccccc
+                -webkit-tap-highlight-color: transparent
+                font-size: 0
+                white-space: nowrap
+                border-bottom-left-radius: 2px
+                border-top-left-radius: 2px
+                &:hover
+                  color: #000000
+                  border: 1px solid black
+                  z-index: 2
+            .auth-google
+                border-bottom-right-radius: 2px
+                border-top-right-radius: 2px
+                &:hover
+                  color: green
+                  border: 1px solid black
+                  z-index: 2
+            .auth-facebook
+                &:hover
+                  color: darkblue
+                  border: 1px solid black
+                  z-index: 2
+            .auth-vk
+                &:hover
+                  color: darkblue
+                  border: 1px solid black
+                  z-index: 2
+            .auth-bar-item
+                width: 18px
+                height: 17px
+                padding: 10px 10px 10px
+                margin: 0 -5px 0 0
+                position: relative
+                display: inline-block
+                vertical-align: top
+                border: 1px solid #ccc
+                -o-transition: border-color .1s linear,color .1s linear
+                transition: border-color .1s linear,color .1s linear
+                text-align: center
+                color: #ccc
+                font-size: 17px
+                line-height: 1
+                background-color: #ffffff
+                cursor: pointer
+                z-index: 1
+.addition-bars
+    display: flex
+    justify-content: space-between
+    max-width: 1115px
+    min-width: 1100px
+    margin: 0 auto 10px
+    .currency
+        min-width: 240px
+        height: 50px
+        background: url('../img/curT.png') no-repeat
+        background-size: contain
+        flex: 2
+        margin: 0 92px
+    .weather
+        min-width: 200px
+        height: 50px
+        background-image: url('../img/weath.png')
+        background-size: contain
+        flex: 1
+        margin: 0 0 0 0
+    .search-bar
+        width: 400px
+        margin: 0 15px 0 87px
+        display: flex
+        align-items: center
+        flex: 5
+        .search-form-input
+            margin: 0
+            width: 100%
+            min-width: 338px
+            box-sizing: border-box
+            height: 35px
+            padding: 0 35px 0 40px
+            background: url('../img/i-search.svg') no-repeat 10px 50%
+//navigation styles ends
+.view
+    max-width: 1115px
+    min-width: 1100px
+    margin: 0 auto
+//slider styles
+.top-slider
+    background-size: cover
+    background: url('../img/panoram.jpg') 0 -120px
+    height: 150px
+    max-width: 1115px
+    min-width: 1100px
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: center
+    p
+      background: #e3935e
+      font-size: .8em
+      margin: 0 0 0 30px
+      display: inline-block
+      padding: 2px 10px
+      color: #ffffff
+      font-weight: bold
+    h3
+      font-size: 2em
+      display: table
+      background: #ffffff
+      margin: 0 0 0 30px
+      padding: 2px 10px
+      line-height: 1em
+//end slider styles
+//grid styles
+.grid
+  max-width: 1120px
+  height: 100%
+  box-sizing: border-box
+  //border: 1px solid black
+  display: flex
+  //justify-content: space-between
+  overflow-x: hidden
+  .article-md
+    font-family: 'Source Sans Pro', sans-serif
+    a
+      text-decoration: none
+      color: #000000
+      img
+        border-radius: 2px 2px 0 0
+        max-height: 185px
+      h3
+        font-size: 1.5em
+        line-height: 1em
+        padding: 0 15px
+      p
+        font-size: 1.3em
+        padding: 0 15px
+        word-wrap: break-word
+      span
+        text-shadow: none
+      span:first-of-type
+        margin: 0 15px
+      i
+        margin-right: 5px
+//grid styling blocks for default view
+.grid-l
+  box-sizing: border-box
+  //background-color: #64ac33
+  border: 1px solid #d3d3d3
+  height: 161.2px
+  margin: 8px 0
+  border-radius: 3px
+.grid-sp
+  //background-color: #64ac33
+  box-sizing: border-box
+  border: 1px solid #d3d3d3
+  height: 161.2px
+  width: 280px
+  margin: 8px 4px
+  border-radius: 3px
+.grid-sm
+  box-sizing: content-box
+  //border: 1px solid deeppink
+  height: 246px
+  margin: 8px 0
+  border-radius: 3px
+.grid-sm-s
+  box-sizing: content-box
+  //border: 1px solid deeppink
+  background-color: #ffffff
+  height: 246px
+  width: 280px
+  margin: 8px 4px
+  border-radius: 3px
+.grid-md
+  width: 280px
+  height: 500px
+  box-sizing: border-box
+  //border: 1px solid red
+  margin: 8px 4px 0 4px
+  border-radius: 3px
+  span
+    text-shadow: 2px 2px 4px black
+.grid-b
+  width: 570px
+  height: 500px
+  box-sizing: border-box
+  //border: 1px solid green
+  margin: 8px 4px 0 4px
+  border-radius: 3px
+.no-mr-l
+  margin-left: 0
+.no-mr-r
+  margin-right: 0
+.no-mr-b
+  margin-bottom: 0
+.no-mr-t
+  margin-top: 0
+
+//load more news button
+#more-news
+  display: block
+  margin: 20px auto
+  padding: 5px 15px
+  border-radius: 20px
+  border: 1px solid #d3d3d3
+  background: #ffffff
+  color: #8a8a8a
+  outline: none
+//banner styles(otdbIx He za gorami)
+.banner
+  background: rgba(211,110,130,1)
+  background: -moz-linear-gradient(-45deg, rgba(228, 20, 61 ,1) 0%, rgba(239,130,102,1) 54%, rgba(239,130,102,1) 100%)
+  //background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(211,110,130,1)), color-stop(54%, rgba(239,130,102,1)), color-stop(100%, rgba(239,130,102,1)))
+  background: -webkit-linear-gradient(-45deg, rgba(228, 20, 61 ,1) 0%, rgba(239,130,102,1) 54%, rgba(239,130,102,1) 100%)
+  background: -o-linear-gradient(-45deg, rgba(228, 20, 61 ,1) 0%, rgba(239,130,102,1) 54%, rgba(239,130,102,1) 100%)
+  background: -ms-linear-gradient(-45deg, rgba(228, 20, 61 ,1) 0%, rgba(239,130,102,1) 54%, rgba(239,130,102,1) 100%)
+  background: linear-gradient(135deg, rgba(228, 20, 61 ,1) 0%, rgba(239,130,102,1) 54%, rgba(239,130,102,1) 100%)
+  box-sizing: border-box
+  padding: 10px 30px 30px 30px
+  header
+    display: flex
+    align-items: center
+    h3
+      margin: 10px
+      color: #ffffff
+      display: inline
+      float: left
+      font-size: 2.4em
+      font-family: 'Open Sans Condensed', sans-serif
+      font-weight: 700
+    .line
+      display: inline-block
+      background-color: rgba(255,255,255,0.3)
+      width: 1px
+      height: 50px
+      float: left
+      margin: 0 40px 0 20px
+    p
+      display: inline-block
+      color: #ffffff
+      margin: 0
+      font-size: 1.2em
+      font-weight: 300
+      font-family: 'Comfortaa', sans-serif
+  .grid
+    clear: both
+    .grid-md, .grid-sm
+      border-radius: 3px
+    .grid-b
+      a
+        h3
+          top: 380px
+    .grid-sm
+      position: relative
+      font-family: 'Source Sans Pro', sans-serif
+      overflow: hidden
+      img
+        width: 100%
+        height: 100%
+        z-index: 1
+        border-radius: 3px
+        object-fit: cover
+        min-height: 250px
+      span, p
+        position: absolute
+        top: 0
+        z-index: 2
+        &:nth-child(2)
+          top: 15px
+          left: 15px
+          font-size: 1em
+          color: #ffffff
+          background-color: rgba(76, 145, 230, 0.9)
+          padding: 3px 10px
+          border-radius: 5px
+          text-transform: uppercase
+        &:nth-child(3)
+          top: 140px
+          color: #cccccc
+          margin:  0 5px 0 10px
+        &:nth-child(4)
+          top: 160px
+          margin: 0 5px 0 10px
+          font-size: 1.5em
+          line-height: 1.2em
+          font-weight: 500
+          color: #ffffff
+          text-shadow: 2px 2px 4px black
+.banner-bottom
+  background: rgba(145,108,181,1)
+  background: -moz-linear-gradient(left, rgba(145,108,181,1) 0%, rgba(177,103,155,1) 33%, rgba(222,97,119,1) 80%, rgba(222,97,119,1) 100%)
+  background: -webkit-linear-gradient(left, rgba(145,108,181,1) 0%, rgba(177,103,155,1) 33%, rgba(222,97,119,1) 80%, rgba(222,97,119,1) 100%)
+  background: -o-linear-gradient(left, rgba(145,108,181,1) 0%, rgba(177,103,155,1) 33%, rgba(222,97,119,1) 80%, rgba(222,97,119,1) 100%)
+  background: -ms-linear-gradient(left, rgba(145,108,181,1) 0%, rgba(177,103,155,1) 33%, rgba(222,97,119,1) 80%, rgba(222,97,119,1) 100%)
+  background: linear-gradient(to right, rgba(145,108,181,1) 0%, rgba(177,103,155,1) 33%, rgba(222,97,119,1) 80%, rgba(222,97,119,1) 100%)
+  padding-top: 0
+  .grid
+    .grid-sm-s
+      position: relative
+      font-family: 'Source Sans Pro', sans-serif
+      overflow: hidden
+      img
+        width: 100%
+        height: 100%
+        z-index: 1
+        border-radius: 3px
+        object-fit: cover
+        min-height: 250px
+      span, p
+        position: absolute
+        top: 0
+        z-index: 2
+        &:nth-child(2)
+          top: 15px
+          left: 15px
+          font-size: 1em
+          color: #ffffff
+          background-color: rgba(76, 145, 230, 0.9)
+          padding: 3px 10px
+          border-radius: 5px
+          text-transform: uppercase
+        &:nth-child(3)
+          top: 140px
+          color: #cccccc
+          margin:  0 5px 0 10px
+        &:nth-child(4)
+          top: 160px
+          margin: 0 5px 0 10px
+          font-size: 1.5em
+          line-height: 1.2em
+          font-weight: 500
+          color: #ffffff
+          text-shadow: 2px 2px 4px black
+
+//top comments styles
+.top-comments
+  margin: 20px 0
+  .grid-md
+    h3
+      font-family: 'Open Sans Condensed', sans-serif
+      font-size: 2em
+      font-weight: 700
+      margin: 10px 0 15px 15px
+      text-decoration: underline
+    ul
+      margin: 0 15px 0 15px
+      li
+        list-style-type: none
+        font-family: 'Source Sans Pro', sans-serif
+        margin: 5px 0
+        i
+          margin-right: 5px
+        a
+          font-size: 1.2em
+          text-decoration: none
+          color: #000000
+          &:hover
+            text-decoration: underline
+        h6
+          font-size: 1.3em
+          margin-top: 0
+          color: #000000
+          i
+            margin-right: 5px
+        p
+          a
+            font-size: 1.2em
+            line-height: 1.2em
+
+.part
+  margin: 20px 0 8px 0
+  span
+    p
+      text-shadow: none
+  header
+    display: flex
+    justify-content: space-between
+    align-items: baseline
+    margin: 0 15px
+    h3
+      font-family: 'Open Sans Condensed', sans-serif
+      font-size: 2.5em
+      font-weight: 700
+      margin-bottom: 0
+  footer
+    p
+      float: right
+      margin: 15px 15px
+      font-family: 'Open Sans Condensed', sans-serif
+      font-size: .85em
+      text-transform: uppercase
+      font-weight: 700
+      a
+        color: grey
+      i
+        color: grey
+        margin-right: .3em
+//business part styles
+//auto part styles
+.auto
+  .grid-b, grid-md, .grid-sm, .grid-sp
+    overflow: hidden
+  section>h3
+    font-family: 'Open Sans Condensed', sans-serif
+    text-align: center
+    a
+      color: red
+    .article-main-prices
+      color: #ffea00
+      font-size: 3em
+      font-weight: 700
+      font-family: 'Anton', sans-serif
+      letter-spacing: .07em
+      text-shadow: 2px 2px 4px black
+  .grid-sm
+    position: relative
+    img
+      object-fit: cover
+      min-height: 250px
+    h3
+      position: absolute
+      top: .5em
+      font-size: 1.6em
+      line-height: 1.2em
+      color: #ffffff
+      text-shadow: 2px 2px 4px black
+      margin: 0 15px
+    span
+      position: absolute
+      bottom: .5em
+      left: .5em
+    .article-main-prices
+      color: #ffea00
+      font-size: 3em
+      font-weight: 700
+      font-family: 'Anton', sans-serif
+      letter-spacing: .07em
+      text-shadow: 2px 2px 4px black
+
+//styles for blocks on main page
+.grid-news
+  .grid-last-news
+    background-color: #7eaaee
+    font-family: 'Source Sans Pro', sans-serif
+    font-weight: 500
+    .horizontal-line
+      display: flex
+      align-items: baseline
+      width: 80%
+      margin: 0 auto
+      height: 1px
+      background-color: #cccccc
+    h3
+      font-size: 1.45em
+      color: #ffffff
+      margin: 10px 0 10px 15px
+      i
+        font-size: .8em
+        margin-right: 10px
+    ul
+      margin: 15px 0 0 15px
+      height: 84%
+      display: flex
+      flex-direction: column
+      justify-content: space-around
+      li
+        list-style-type: none
+        //margin: 15px 0
+        span
+          text-shadow: none
+      p
+        font-size: 1.3em
+        color: #ffffff
+      span
+        font-size: 1em
+        color: #cccccc
+  .special-news
+    background-color: #ffffff
+    border: 1px solid #e9e9e9
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    align-items: center
+    font-family: 'Source Sans Pro', sans-serif
+    padding: 70px 0
+    position: relative
+    img
+      border-radius: 50%
+      width: 200px
+      height: 200px
+    span
+      font-size: 1em
+      color: #e58c46
+      background-color: rgba(239, 136, 25, 0.3)
+      padding: 3px 10px
+      border-radius: 5px
+      text-transform: uppercase
+      text-shadow: none
+      &:before
+        content: url('../img/label.png')
+        position: absolute
+        top: 80px
+        left: 35px
+    p
+      text-align: center
+      font-size: 1.6em
+      line-height: 1.2em
+  .special-posts
+    background: rgba(95,161,229,1)
+    background: -moz-linear-gradient(top, rgba(95,161,229,1) 0%, rgba(82,211,250,1) 76%, rgba(82,211,250,1) 100%)
+    background: -webkit-linear-gradient(top, rgba(95,161,229,1) 0%, rgba(82,211,250,1) 76%, rgba(82,211,250,1) 100%)
+    background: -o-linear-gradient(top, rgba(95,161,229,1) 0%, rgba(82,211,250,1) 76%, rgba(82,211,250,1) 100%)
+    background: -ms-linear-gradient(top, rgba(95,161,229,1) 0%, rgba(82,211,250,1) 76%, rgba(82,211,250,1) 100%)
+    background: linear-gradient(to bottom, rgba(95,161,229,1) 0%, rgba(82,211,250,1) 76%, rgba(82,211,250,1) 100%)
+    border: 1px solid #e9e9e9
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    align-items: center
+    font-family: 'Source Sans Pro', sans-serif
+    padding: 70px 0
+    position: relative
+    img
+      border-radius: 50%
+      width: 200px
+      height: 200px
+    span
+      font-size: 1em
+      color: #ffffff
+      background-color: rgba(95,161,229,.5)
+      padding: 3px 10px
+      border-radius: 5px
+      text-transform: uppercase
+      &:before
+        content: url('../img/label2.png')
+        position: absolute
+        top: 80px
+        left: 35px
+    p
+      text-align: center
+      font-size: 1.6em
+      line-height: 1.2em
+      color: #ffffff
+      text-shadow: 2px 2px 4px black
+  .grid-sm
+    position: relative
+    font-family: 'Source Sans Pro', sans-serif
+    overflow: hidden
+    img
+      width: 100%
+      height: 100%
+      z-index: 1
+      border-radius: 3px
+      object-fit: cover
+      min-height: 250px
+    span, p
+      position: absolute
+      top: 0
+      z-index: 2
+      &:nth-child(2)
+        top: 15px
+        left: 15px
+        font-size: 1em
+        color: #ffffff
+        background-color: rgba(76, 145, 230, 0.9)
+        padding: 3px 10px
+        border-radius: 5px
+        text-transform: uppercase
+      &:nth-child(3)
+        top: 140px
+        color: #cccccc
+        margin:  0 5px 0 10px
+      &:nth-child(4)
+        top: 160px
+        margin: 0 5px 0 10px
+        font-size: 1.5em
+        line-height: 1.2em
+        font-weight: 500
+        color: #ffffff
+        text-shadow: 2px 2px 4px black
+.users-minds
+  background: rgba(95,161,229,1)
+  background: -moz-linear-gradient(top, rgba(95,161,229,1) 0%, rgba(82,211,250,1) 76%, rgba(82,211,250,1) 100%)
+  background: -webkit-linear-gradient(top, rgba(95,161,229,1) 0%, rgba(82,211,250,1) 76%, rgba(82,211,250,1) 100%)
+  background: -o-linear-gradient(top, rgba(95,161,229,1) 0%, rgba(82,211,250,1) 76%, rgba(82,211,250,1) 100%)
+  background: -ms-linear-gradient(top, rgba(95,161,229,1) 0%, rgba(82,211,250,1) 76%, rgba(82,211,250,1) 100%)
+  background: linear-gradient(to bottom, rgba(95,161,229,1) 0%, rgba(82,211,250,1) 76%, rgba(82,211,250,1) 100%)
+  border: 1px solid #e9e9e9
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  align-items: center
+  font-family: 'Source Sans Pro', sans-serif
+  padding: 40px 0
+  position: relative
+  img
+    border-radius: 50%
+    width: 200px
+    height: 200px
+  p
+    text-align: center
+    font-size: 1.6em
+    line-height: 1.2em
+    color: #000000
+    //text-shadow: 2px 2px 4px black
+    &:before
+      content: url('../img/comma.png')
+      position: absolute
+      top: 80px
+      left: 35px
+  span
+    font-size: 1em
+    //color: #ffffff
+    //background-color: rgba(95,161,229,.5)
+    text-align: center
+    padding: 3px 10px
+    border-radius: 5px
+    font-size: .8em
+    p:first-of-type
+      color: #6aa2fc
+      //font-family: 'Source Sans Pro', sans-serif
+    p:last-of-type
+      color: #cccccc
+
+.grid-b
+  //background-color: lightgreen
+  //border: 1px solid #d3d3d3
+  box-sizing: border-box
+  border-radius: 3px
+  position: relative
+  font-family: 'Source Sans Pro', sans-serif
+  a
+    text-decoration: none
+  img
+    position: absolute
+    height: 100%
+    border-radius: 3px
+  span
+    color: #FFFFFF
+  span:first-of-type
+    position: relative
+    top: 0
+    margin: 0
+    top: 15px
+    left: 15px
+    font-size: 1em
+    color: #ffffff
+    background-color: rgba(76, 145, 230, 0.9)
+    padding: 3px 10px
+    border-radius: 5px
+    text-transform: uppercase
+  span:nth-of-type(2)
+    position: relative
+    top: 380px
+    margin: 0 15px
+  span:nth-of-type(3)
+    position: relative
+    top: 380px
+  .article-main-prices
+    position: absolute !important
+    top: 460px !important
+    left: .5em
+    color: #ffea00
+    font-size: 3em
+    font-weight: 700
+    font-family: 'Anton', sans-serif
+    letter-spacing: .07em
+    text-shadow: 2px 2px 4px black
+  h3
+    position: relative
+    top: 350px
+    font-size: 1.6em
+    line-height: 1.2em
+    color: #ffffff
+    text-shadow: 2px 2px 4px black
+    margin: 0 15px
+  i
+    margin-right: 5px
+//hover for auto advertisement
+.auto
+  .grid-sp,.grid-b, .grid-md
+    img
+      transition: filter .6s
+      &:hover
+        //-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        //filter: grayscale(100%);
+        -webkit-filter: blur(2px)
+        filter: blur(2px)
+.grid-md-border
+  background: #ffffff
+  border: 1px solid #d3d3d3
+  box-sizing: border-box
+  border-radius: 3px
+.grid-sm
+  background-color: lightblue
+.grid-white
+  background-color: transparent
+
+//=====================================================================
+//=====================================================================
+//===================END OF MAIN PAGE HOME.HTML STYLES=================
+//=====================================================================
+//=====================================================================
+
+
+//=====================================================================
+//=====================================================================
+//===================START CATALOG.HTML STYLES=========================
+//=====================================================================
+//=====================================================================
+.auto-catalog
+  width: 1115px
+  form
+    //background: rgba(255,255,255,1)
+    //background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 16%, rgba(247,247,247,1) 100%)
+    //background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(16%, rgba(255,255,255,1)), color-stop(100%, rgba(247,247,247,1)))
+    //background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 16%, rgba(247,247,247,1) 100%)
+    //background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 16%, rgba(247,247,247,1) 100%)
+    //background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 16%, rgba(247,247,247,1) 100%)
+    //background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 16%, rgba(247,247,247,1) 100%)
+    background: rgba(247,247,247,1)
+    background: -moz-radial-gradient(center, ellipse cover, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 74%, rgba(255,255,255,1) 100%)
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(247,247,247,1)), color-stop(74%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)))
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 74%, rgba(255,255,255,1) 100%)
+    background: -o-radial-gradient(center, ellipse cover, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 74%, rgba(255,255,255,1) 100%)
+    background: -ms-radial-gradient(center, ellipse cover, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 74%, rgba(255,255,255,1) 100%)
+    background: radial-gradient(ellipse at center, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 74%, rgba(255,255,255,1) 100%)
+  .auto-filters
+    float: left
+    box-sizing: border-box
+    width: 220px
+    margin-left: 15px
+    box-sizing: border-box
+    select
+      width: 200px
+    .short
+      width: 92px
+    .price-group,.group
+      display: inline-block
+    *
+      margin: 0
+      padding: 0
+    h2,p
+      margin: 0
+      padding: 0
+      font-size: 1.1em
+      line-height: 1em
+    h2
+      margin: 15px 0 5px 0
+    ul
+      li
+        list-style-type: none
+//styles for auto header table (where autos shown)
+.auto-add
+  box-sizing: border-box
+  float: right
+  width: 880px
+  margin-bottom: 15px
+  .auto-table
+    margin: 0
+    padding: 0
+    border: 0
+    font-size: 100%
+    font-family: 'Open Sans Condensed', sans-serif
+    vertical-align: baseline
+    width: 865px
+    th
+      line-height: 19px
+      background-color: #FFFFFF
+      text-align: left
+      border: 1px solid #cccccc
+      padding: 0
+      .auto-sorters
+        list-style-type: none
+        margin: 0
+        li
+          display: inline-block
+          margin: 0 20px
+          &:nth-of-type(3),&:nth-of-type(4)
+            float: right
+          a
+            color: #000000
+  //styles for table body
+  .carRow
+    border: 1px solid #cccccc
+    //th
+      //background-color: #f7f7f7
+    .cost-left
+      h2
+        float: left
+        font-size: 1.6em
+        margin: 0
+        margin: 0 0 5px 15px
+      .auto-table-small-cols
+        float: right
+        margin: 0 11px
+        margin-top: 5px
+      .auto-table-thumbs
+        float: left
+      ul
+        margin-left: 15px
+        clear: both
+        li
+          display: inline-block
+          list-style-type: none
+          width: 80pxs
+      p
+        float: right
+        width: 65%
+        //font-family: 'Open Sans Condensed', sans-serif
+        font-weight: 500
+        font-family: Verdana, Tahoma
+        font-size: 1em
+        letter-spacing: .5px
+      .auto-table-tlbar
+        float: left
+        clear: none
+        color: #cccccc
+        li
+          font-weight: 500
+        .photos>a
+          color: #cccccc
+          margin-right: 15px
+          i
+            margin-right: 2px
+            font-size: .7em
+            vertical-align: middle
+    .cost-right
+      vertical-align: baseline
+      text-align: right
+      .cost-i
+        margin-right: 1px
+        margin-top: 5px
+        .big
+          font-size: 1.2em
+          margin-right: 5px
