@@ -1,0 +1,96 @@
+
+<div class="auto-detail-content" >
+    <link rel="stylesheet" href="app/css/auto-detail.css">
+    <div class="auto-sm-desc">
+        <h1>{{ carData.makeName }} {{ carData.model }}</h1><br>
+        <span>
+            <p>{{ carData.year }} года,</p>
+            <p>с пробегом в {{ carData.mileage }} км</p>
+        </span>
+    </div>
+
+    <div class="auto-detail-price">
+        <span class="auto-detail-costs">
+            <span class="auto-price">{{ carData.price * 1.9 }} BYN.</span>
+            <small class="auto-other-costs">
+                <span>{{ carData.price }} $</span>
+                <span>|</span>
+                <span>{{ carData.price * 0.85}} €</span>
+            </small>
+        </span>
+    </div>
+    <div class="line" style="margin: 0 0 15px 0"></div>
+    <!-- photos -->
+    <div class="auto-photos">
+
+            <table style="height: 135px;">
+                <tbody style="display: flex; width: 1070px;">
+                    <tr style=" width: 100%; height: 150px; display: inline-table;">
+                        <td class="thumb" ng-repeat="img in carData.photos"  on-finish-render="ngRepeatFinished" style="max-width: 12.5%;">
+                            <a href="" title="" id="thumb_{{$index}}">
+                                <img ng-src="{{img}}" alt="" style="height: 100px; display: flex; justify-content: center">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        <!--big image-->
+        <div class="auto-photos-big" style="display: flex; justify-content: center">
+            <div class="buttons">
+                <div class="prev">
+                    <i class="icon-arrow-left"></i>
+                </div>
+                <div class="next">
+                    <i class="icon-arrow-right"></i>
+                </div>
+            </div>
+            <div class="auto-photos-img">
+                <img ng-src="{{ carData.photos[0] }}" style="width: 1115px; height:auto;">
+            </div>
+        </div>
+    </div>
+    <!-- / photos -->
+    <div class="line"></div>
+    <div class="auto-detail-desc">
+        <p class="auto-fast-chars">
+            <span>
+                <strong>{{ carData.makeName }}</strong>&nbsp;{{ carData.model }}
+            </span>
+            <span class="auto-view-smalldet">
+                <span class="year"><strong>{{ carData.year }}</strong> г.в.</span>
+                <span class="dist">
+                    <strong>{{ carData.mileage }}</strong> км
+                </span>
+            </span>
+        </p>
+        <strong>!!!!<p>седан, бензин <strong>2</strong> л, автомат, передний привод</p></strong>
+        <div class="auto-options" style="display: flex; justify-content: space-around; margin: 20px 0;">
+            <ul>
+                <li ng-repeat="(key, value) in carData.specs | limitSpecs:0:4" ng-class=" value ==true ? 'options-true': 'options-false' ">{{key}}</li>
+            </ul>
+            <ul>
+                <li ng-repeat="(key, value) in carData.specs | limitSpecs:5:false" ng-class=" value ==true ? 'options-true': 'options-false' ">{{key}}</li>
+            </ul>
+        </div>
+
+        <p>Гомель (Беларусь), растаможен</p>
+
+        <p>{{ carData.description }}</p>
+        <br>
+        <div class="auto-contacts">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>
+                            <p>
+                                <strong><a href="tel://+375-25-123-45-67">Телефон: {{ carData.phone }}</a></strong>
+                            </p>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="line"></div>
+</div>

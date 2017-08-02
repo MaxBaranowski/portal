@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="start">
+<head>
+    <meta charset="UTF-8">
+    <title>Main News</title>
+    <base href="/" />
+    <meta name="viewport" content="user-scalable=yes">
+    <meta name="description" content="Main News портал для размещения объявлений, общения, чтения новостей и интересных статей">
+    <link rel="icon" type="image/png" href="img/news-s.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css" integrity="sha256-sxzrkOPuwljiVGWbxViPJ14ZewXLJHFJDn0bv+5hsDY=" crossorigin="anonymous" />
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <!-- build:css css/main.min.css -->
+    <link rel="stylesheet" href="/../app/css/main.css">
+    <!--for remodal window-->
+    <link rel="stylesheet" href="/../app/libs/sweetalert/dist/sweetalert.css">
+    <!-- endbuild -->
+    <!--<base href="/">-->
+</head>
+<body ng-cloak>
+	<navigation-directive></navigation-directive>
+	<div ui-view class="view" style="overflow: hidden;"></div>
+    <footer-directive></footer-directive>
+    <!-- build:js js/vendor.min.js -->
+    <script src="/../app/libs/angular/angular.min.js"></script>
+    <script src="/../app/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/../app/libs/angular-resource/angular-resource.min.js"></script>
+    <script src="/../app/libs/angular-local-storage/dist/angular-local-storage.min.js"></script>
+
+
+    <!--firebase-->
+    <script src="/../app/libs/firebase/firebase.js"></script>
+    <script src="/../app/libs/angularfire/dist/angularfire.min.js"></script>
+    <!------------>
+    <script src="/../app/js/app.js"></script>
+    <script src="/../app/js/directives/directives.js"></script>
+
+    <script src="/../app/js/services/modal-form-authorization-service.js"></script>
+    <script src="/../app/js/services/firebase-authorization-service.js"></script>
+    <script src="/../app/js/services/crud-cars-data-service.js"></script>
+
+    <script src="/../app/js/controllers/homeCtrl.js"></script>
+    <script src="/../app/js/controllers/newsCtrl.js"></script>
+    <script src="/../app/js/controllers/catalogCtrl.js"></script>
+    <script src="/../app/js/controllers/catalogAutoCtrl.js"></script>
+    <script src="/../app/js/controllers/autoDetailCtrl.js"></script>
+    <script src="/../app/js/controllers/weatherCtrl.js"></script>
+    <script src="/../app/js/controllers/financeCtrl.js"></script>
+    <script src="/../app/js/controllers/forumCtrl.js"></script>
+    <script src="/../app/js/controllers/userAccountCtrl.js"></script>
+
+    <script src="/../app/js/filters/filters.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js js/main.min.js -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="/../app/js/public/jquery.mask.min.js"></script>
+    <script src="/../app/js/public/animatedModal.min.js"></script>
+    <script src="/../app/libs/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- endbuild -->
+</body>
+</html>
