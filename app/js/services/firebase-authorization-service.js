@@ -112,6 +112,7 @@ app.service("firebaseAuthorization", function ( $rootScope, $firebase) {
         // provider.addScope('provider.addScope(https://www.googleapis.com/auth/firebase.readonly);');
         provider.addScope('profile');
         provider.addScope('email');
+         provider.addScope('https://www.googleapis.com/auth/plus.me');
         return firebase.auth().signInWithPopup(provider)
             .catch(e => {
                 // alert("GOOGLE SIGN IN ERROR: " + e.message);
