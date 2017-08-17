@@ -4,7 +4,7 @@ app.controller('autoDetailCtrl', function ($scope, modalForm, firebaseAuthorizat
     getCarsModels.getOneCarById($stateParams.id)
         .then(function (data) {
             $scope.carData = data;
-        })
+        });
 
 //можно добавить проверку существует ли такой айди
 

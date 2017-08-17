@@ -15,23 +15,70 @@ app.service("getCarsModels", function ($http, $rootScope, $q, $state, $location)
     var defferd = $q.defer();
 
     //get all cars to show on cars catalog page
-    this.getCars = function(){
-        return $http.get(`https://api.mlab.com/api/1/databases/portal-database/collections/cars-ads?&apiKey=MMxhOJ-uebWZVOJyMN8Y-Q26lAlPJXXp`)
-            .then( (response) => {
-                return response.data;
-            }, (error) => {
-                return error.message;
-            })
-    }
+    //sort -> (up, down)
+    this.getCars = function(sort){
+        // return $http.get(`https://api.mlab.com/api/1/databases/portal-database/collections/cars-ads?&apiKey=MMxhOJ-uebWZVOJyMN8Y-Q26lAlPJXXp`)
+        if(sort != undefined && sort === 'down'){
+            return $http.get(`/api/sort/date/old`)
+                .then( (response) => {
+                    return response.data;
+                }, (error) => {
+                    return error.message;
+                })
+        }
+
+        else if(sort != undefined && sort === 'year-new'){
+            return $http.get(`/api/sort/year/new`)
+                .then( (response) => {
+                    return response.data;
+                }, (error) => {
+                    return error.message;
+                })
+        }else if(sort != undefined && sort === 'year-old'){
+            return $http.get(`/api/sort/year/old`)
+                .then( (response) => {
+                    return response.data;
+                }, (error) => {
+                    return error.message;
+                })
+        }
+
+        else if(sort != undefined && sort === 'mileage-big'){
+            return $http.get(`/api/sort/mileage/big`)
+                .then( (response) => {
+                    return response.data;
+                }, (error) => {
+                    return error.message;
+                })
+        }else if(sort != undefined && sort === 'mileage-small'){
+            return $http.get(`/api/sort/mileage/small`)
+                .then( (response) => {
+                    return response.data;
+                }, (error) => {
+                    return error.message;
+                })
+        }
+
+        else{
+            return $http.get(`/api/get-all`)
+                .then( (response) => {
+                    return response.data;
+                }, (error) => {
+                    return error.message;
+                })
+        }
+    };
+
 
     //get car for detail view
     this.getOneCarById = function (ad_id) {
     //get car by it _id -> EXAMPLE:59761513c2ef1609d427e8d0
     //https://api.mlab.com/api/1/databases/portal-database/collections/cars-ads/59761513c2ef1609d427e8d0?apiKey=MMxhOJ-uebWZVOJyMN8Y-Q26lAlPJXXp
-        return $http.get(`https://api.mlab.com/api/1/databases/portal-database/collections/cars-ads/${ad_id}?apiKey=MMxhOJ-uebWZVOJyMN8Y-Q26lAlPJXXp`)
+        //return $http.get(`https://api.mlab.com/api/1/databases/portal-database/collections/cars-ads/${ad_id}?apiKey=MMxhOJ-uebWZVOJyMN8Y-Q26lAlPJXXp`)
+        return $http.get(`/api/get-by-id/${ad_id}`)
             .then( (response) => {
                 // console.log('console.log(response)',response)
-                return response.data;
+                return response.data[0];
             }, (error) => {
                 swal({
                     title: "404",
@@ -62,11 +109,13 @@ app.service("getCarsModels", function ($http, $rootScope, $q, $state, $location)
 
 
     this.addCarAdd = function (ad){
+        //бьются ссылки - очень длинные ломаются
         // post to db new car ad
         return  $http({
             method: 'POST',
-            url: 'https://api.mlab.com/api/1/databases/portal-database/collections/cars-ads?apiKey=MMxhOJ-uebWZVOJyMN8Y-Q26lAlPJXXp',
-            data: JSON.stringify(ad),
+            // url: 'https://api.mlab.com/api/1/databases/portal-database/collections/cars-ads?apiKey=MMxhOJ-uebWZVOJyMN8Y-Q26lAlPJXXp',
+            url: `/api/create-ad/${JSON.stringify(ad)}`,
+            // data: JSON.stringify(ad),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -101,7 +150,8 @@ app.service("getCarsModels", function ($http, $rootScope, $q, $state, $location)
     //get all cars ad from one user
     this.getCarsByUserId = function (userId) {
         // return $http.get(`https://api.mlab.com/api/1/databases/portal-database/collections/cars-ads?={'userId':'229K98sM3huVOUEu2sm1SKmUWh3qB3'}&apiKey=MMxhOJ-uebWZVOJyMN8Y-Q26lAlPJXXp`) 9K98sM3huVOUEu2sm1SKmUWh3qB3
-        return $http.get("https://api.mlab.com/api/1/databases/portal-database/collections/cars-ads?q={'userId':'" + userId + "'}&apiKey=MMxhOJ-uebWZVOJyMN8Y-Q26lAlPJXXp")
+        // return $http.get("https://api.mlab.com/api/1/databases/portal-database/collections/cars-ads?q={'userId':'" + userId + "'}&apiKey=MMxhOJ-uebWZVOJyMN8Y-Q26lAlPJXXp")
+        return $http.get(`/api/get-by-user-id/${userId}`)
             .then( (response) => {
                 // console.log(response)
                 return response.data;

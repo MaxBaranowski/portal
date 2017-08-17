@@ -568,14 +568,15 @@
                         <li class="auto-sorters-last">
                             <a href=""
                                ng-model="sorters_last"
-                               data="creation_date">Последние добавленные</a>
+                               data="creation_date">Старые</a>
                         </li>
-                        <li class="flr auto-sorters-dist">
+                        <li class="auto-sorters-dist">
                             <a href=""
                                ng-model="sorters_dist"
                                data="odometer">Пробег</a>
                         </li>
-                        <li class="flr auto-sorters-year">
+                        <li class="auto-sorters-year"
+                            style="margin-right: 10px;">
                             <a href=""
                                ng-model="sorters_year"
                                data="year" class="">Год</a>
@@ -593,11 +594,10 @@
             </thead>
             <tbody>
                 <tr id="car_1" class="carRow" ng-repeat=" ad in carsAds | limitTo:10">
-
                     <th colspan="2" class="cost-left">
                         <h2>
                                 <span>
-                                    <a ui-sref="auto/detail({id: ad._id.$oid })">
+                                    <a ui-sref="auto/detail({id: ad._id })">
                                         <strong>{{ad.makeName}}: {{ad.model}}</strong>
                                     </a>
                                 </span>
@@ -610,7 +610,7 @@
                         <span class="auto-table-small-cols">
                                     <span class="year">{{ad.year}}</span>
                                 </span>
-                        <ul class="auto-table-thumbs">
+                        <ul class="auto-table-thumbs" style="margin-bottom: 20px;">
                             <li>
                                 <a ui-sref="auto/detail({id: ad._id.$oid })">
                                     <img width="80" height="80" ng-src="{{ad.photos[0]}}">

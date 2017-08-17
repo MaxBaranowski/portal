@@ -106,18 +106,18 @@ app.service("firebaseAuthorization", function ( $rootScope, $firebase) {
         }
     });
 
-    //LogIn ith google account
-    googleLOgInBtn.click( e => {
+    //LogIn with google account
+    googleLOgInBtn.click( () => {
         var provider = new firebase.auth.GoogleAuthProvider();
-        // provider.addScope('provider.addScope(https://www.googleapis.com/auth/firebase.readonly);');
         provider.addScope('profile');
         provider.addScope('email');
+        provider.addScope('https://www.googleapis.com/auth/plus.me');
         return firebase.auth().signInWithPopup(provider)
-            .catch(e => {
+            .catch(error => {
                 // alert("GOOGLE SIGN IN ERROR: " + e.message);
                 swal({
                     title: "Ошибочка",
-                    text: e.message,
+                    text: error.message,
                     type: "error",
                     confirmButtonColor: "#AEDEF4",
                     confirmButtonText: "OK",
@@ -125,6 +125,7 @@ app.service("firebaseAuthorization", function ( $rootScope, $firebase) {
                 });
             });
     });
+
 
     //log out event
     logOutBtn.click(e => {
