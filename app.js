@@ -2,16 +2,14 @@ var express = require('express');
 var MongoClient = require('mongodb').MongoClient;
 var path = require('path');
 var bodyParser = require('body-parser');
-
 var app = express();
-app.set('port', process.env.PORT || 4848);
+// app.set('port', process.env.PORT || 4848);
 
 app.use(express.static(__dirname + '/public'));
 // parse application/x-www-form-urlencoded
-// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit: '5mb'}))
 
 app.get('/', function(req,res){
     res.sendFile(__dirname + '/public/app/index.html');
@@ -64,10 +62,12 @@ app.get('/api/get-by-id/:id', function(req,res){
 });
 
 //create new ad
-app.get('/api/create-ad/:data', function(req,res){
+app.post('/api/create-ad/', function(req,res){
     //get data and parse it to valid json
-    var data = JSON.parse(req.params.data);
-    console.log(data)
+    // var data = JSON.parse(req.params.data);
+    // console.log('recive: ',req.body)
+    var data = req.body;
+
     var MongoClient = require('mongodb').MongoClient;
 
     var ObjectId = require('mongodb').ObjectId;
@@ -78,10 +78,12 @@ app.get('/api/create-ad/:data', function(req,res){
                 if (err) throw err;
                 //выбрать все из бд
                 db.collection('cars-ads')
-                    .insert(data)
+                    .insertOne(data)
+                res.send('OK')
                 db.close();
             });
 });
+
 
 app.get('/api/get-by-user-id/:id', function(req,res){
     // console.log(req.params.id)
@@ -228,6 +230,10 @@ app.get('/api/sort/mileage/small', function(req,res){
 
 
 
-app.listen(app.get('port'), function(){
-    console.log("server starts on port: " + app.get('port'));
-});
+// app.listen(app.get('port'), function(){
+//     console.log("server starts on port: " + app.get('port'));
+// });
+
+app.listen(process.env.PORT || 8080, () => {
+    console.log('server starts')
+})

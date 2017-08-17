@@ -112,13 +112,16 @@ app.service("getCarsModels", function ($http, $rootScope, $q, $state, $location)
         //бьются ссылки - очень длинные ломаются
         // post to db new car ad
         return  $http({
-            method: 'POST',
+            // post to db new car ad via mlab api WORKS
+            // method: 'POST',
             // url: 'https://api.mlab.com/api/1/databases/portal-database/collections/cars-ads?apiKey=MMxhOJ-uebWZVOJyMN8Y-Q26lAlPJXXp',
-            url: `/api/create-ad/${JSON.stringify(ad)}`,
             // data: JSON.stringify(ad),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            // contentType: "application/json"
+
+            method: 'POST',
+            url: '/api/create-ad',
+            data: ad,
+            contentType: "application/json"
         }).then((response) =>{
             // console.info('data send');
             return new Promise(function (resolve, reject) {
