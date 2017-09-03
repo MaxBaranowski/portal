@@ -7,6 +7,7 @@
 		</a>
 	</div>
 </div>
+
 <div class="navigation">
 	<div class="nav-links">
 		<a ui-sref="home">Главная</a>
@@ -132,12 +133,41 @@
 			</div>
 		</div>
 		<!-- /form -->
-
 	</div>
 </div>
 <div class="addition-bars">
     <div class="currency"></div>
-    <div class="weather"></div>
+    <div class="weather" style="background-image: none; min-width: 250px;">
+        <style>
+            .w-left>h1:after{
+                content: '\00b0 C';
+                font-size: 20px;
+                font-weight: 100;
+                position: relative;
+                top: -10px;
+            }
+            .w-right{
+                position: relative;
+                left: 110px;
+                top: 7px;
+                line-height: 15px;
+                font-family: 'Comfortaa', sans-serif;
+            }
+            .w-right p{
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+        <div class="w-left" style="position: absolute; ">
+            <img ng-src="https://openweathermap.org/img/w/{{ forecast.weather[0].icon }}.png" alt="" style="width:50px; height:50px; margin-left: -10px;">
+            <h1 style="position: relative; top: -56px; left: 40px; font-size: 2.5em;">{{ forecast.main.temp | number : 0 }}</h1>
+        </div>
+        <div class="w-right">
+            <p>Clouds: {{ forecast.weather[0].description }}</p>
+            <p>Humidity: {{ forecast.main.humidity }}%</p>
+            <p>Wind: {{ forecast.wind.speed }} km/h</p>
+        </div>
+    </div>
     <form action="" class="search-bar">
         <input type="text" class="search-form-input" placeholder="Поиск в каталоге">
     </form>

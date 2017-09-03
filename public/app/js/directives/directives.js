@@ -1,5 +1,9 @@
-function directiveCtrl(){
-
+function directiveCtrl($scope, weather){
+    $scope.forecast = {};
+    weather.getWeatherCurrent().then((success) => {
+        // console.log(success);
+        $scope.$applyAsync(()=> $scope.forecast = success);
+    });
 }
 //header with navigation buttons
 app.directive('navigationDirective',function(){
